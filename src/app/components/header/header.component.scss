@@ -1,0 +1,52 @@
+$primary-color: #3498db;
+$text-color: #333;
+$hover-color: #2980b9;
+$logo-width: 150px;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #f5f5f5;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 75px;
+
+  .header-logo {
+    flex: 1;
+
+    &-img {
+      width: $logo-width;
+      height: auto;
+    }
+  }
+
+  .header-nav {
+    flex: 2;
+    display: flex;
+    justify-content: flex-end;
+
+    .header-link {
+      margin-left: 20px;
+      text-decoration: none;
+      color: $text-color;
+      font-size: 16px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $primary-color;
+      }
+
+      &.active {
+        color: $hover-color;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .header-link.active {
+    color: $hover-color;
+    font-weight: bold;
+  }
+}
