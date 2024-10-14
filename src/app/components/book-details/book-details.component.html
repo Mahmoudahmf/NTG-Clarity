@@ -1,0 +1,36 @@
+
+<div class="spinner" *ngIf="displayMode === displayModes.loading">
+  <div>
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z" opacity="0.25"/><path fill="currentColor" d="M12,4a8,8,0,0,1,7.89,6.7A1.53,1.53,0,0,0,21.38,12h0a1.5,1.5,0,0,0,1.48-1.75,11,11,0,0,0-21.72,0A1.5,1.5,0,0,0,2.62,12h0a1.53,1.53,0,0,0,1.49-1.3A8,8,0,0,1,12,4Z"><animateTransform attributeName="transform" dur="0.75s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></svg></div>
+</div>
+
+<div *ngIf="displayMode === displayModes.success">
+
+  <div class="book-details-container" >
+    <div class="book-image">
+      <h1>{{ bookData.title }}</h1>
+      <img *ngIf="!bookData.cover_id" src="../../../assets/default-img.svg" loading="lazy"  alt="Book Cover">
+
+      <img *ngIf="bookData.cover_id" [src]="'//covers.openlibrary.org/b/id/'+bookData.cover_id+'-M.jpg'" loading="lazy" alt="Book Image" />
+      <!-- src="//covers.openlibrary.org/b/id/12508961-M.jpg" -->
+
+      <!-- <img  src="../../../assets/default-img.svg" alt="Book Cover"> -->
+
+    </div>
+    <div class="book-info">
+      <ul>
+        <li><strong>Published Year:</strong> {{ bookData.first_publish_year }}</li>
+        <li><strong>Title:</strong> {{ bookData.title }}</li>
+        <div *ngFor="let author of combinedAuthors">
+          <li (click)="goToAuthorDetails(author)"> <strong>Author:</strong> {{ author.author_name }}</li>
+        </div>
+        <li><strong>Genre:</strong> {{ bookData.genre }}</li>
+      </ul>
+
+      <button class="wishlist-button" (click)="toggleWishlist()">
+        {{ isInWishlist ? 'Remove from Wishlist' : 'Add to Wishlist' }}
+      </button>
+    </div>
+  </div>
+</div >
+

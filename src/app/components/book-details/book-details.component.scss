@@ -1,0 +1,112 @@
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+$background-color: #f5f5f5;
+$font-color: #333;
+$border-radius: 8px;
+$button-padding: 12px 20px;
+$button-font-size: 1rem;
+
+.book-details-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: $border-radius;
+  padding: 20px;
+  max-width: 1200px;
+
+  .book-image {
+    flex: 1;
+    margin-right: 20px;
+
+    img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: $border-radius;
+      object-fit: cover;
+    }
+  }
+
+  .book-info {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+
+    .book-title {
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+      color: $primary-color;
+      font-weight: bold;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+
+      li {
+        margin-bottom: 15px;
+        font-size: 1.2rem; // Increase font size for list items
+
+        strong {
+          color: $secondary-color;
+        }
+
+        .author-name {
+          cursor: pointer;
+          color: $primary-color;
+          text-decoration: underline;
+          transition: color 0.3s;
+
+          &:hover {
+            color: darken($primary-color, 15%);
+          }
+        }
+      }
+
+      div{
+        li{
+          cursor: pointer;
+        }
+      }
+    }
+
+    .wishlist-button {
+      padding: $button-padding;
+      background-color: $secondary-color;
+      color: white;
+      border: none;
+      border-radius: $border-radius;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      font-size: $button-font-size;
+      font-weight: bold;
+      text-transform: uppercase;
+
+      &:hover {
+        background-color: darken($secondary-color, 10%);
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+// Responsive Styles
+@media (max-width: 768px) {
+  .book-details-container {
+    flex-direction: column;
+
+    .book-image {
+      margin-right: 0;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .book-info {
+      align-items: center;
+    }
+  }
+}
+
