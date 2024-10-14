@@ -1,0 +1,39 @@
+
+
+
+<div>
+  <div class="spinner" *ngIf="displayMode === displayModes.loading">
+    <div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z" opacity="0.25"/><path fill="currentColor" d="M12,4a8,8,0,0,1,7.89,6.7A1.53,1.53,0,0,0,21.38,12h0a1.5,1.5,0,0,0,1.48-1.75,11,11,0,0,0-21.72,0A1.5,1.5,0,0,0,2.62,12h0a1.53,1.53,0,0,0,1.49-1.3A8,8,0,0,1,12,4Z"><animateTransform attributeName="transform" dur="0.75s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></svg></div>
+  </div>
+
+  <div class="book-card-container" *ngIf="displayMode === displayModes.success">
+    <div class="book-card" *ngFor="let book of books">
+      <div class="book-card-content">
+        <div class="book-card-image">
+          <img *ngIf="!book.cover_id" src="../../../assets/default-img.svg" loading="lazy" (click)="goToDetails(book)" alt="Book Cover">
+          <!-- <img  *ngIf="!book.key" [src]="book.key" alt="{{ book.title }}" class="book-cover" /> -->
+          <img *ngIf="book.cover_id" [src]="'//covers.openlibrary.org/b/id/'+book.cover_id+'-M.jpg'" loading="lazy" (click)="goToDetails(book)" alt="Book Image" />
+        </div>
+
+        <div class="book-card-info">
+          <h2 class="book-card-title" (click)="goToDetails(book)"> {{ book.title }}</h2>
+          <p class="book-card-authors">Authors: {{ book.author_names}}</p>
+          <p class="book-card-year">Published: {{ book.first_publish_year}}</p>
+        </div>
+      </div>
+
+      <div class="book-card-actions">
+        <a href="javascript:void(0)" class="book-card__link" (click)="goToDetails(book)">More</a>&nbsp;| &nbsp;
+        <a href="#" class="book-card__link">Wish List</a>
+      </div>
+    </div>
+  </div>
+
+  <div  *ngIf="displayMode === displayModes.error">
+    <p class="error-message">There is an error happend</p>
+  </div>
+
+</div>
+
+
